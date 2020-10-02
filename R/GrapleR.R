@@ -681,7 +681,7 @@ setMethod(f="GrapleCheckService",
           definition=function(grapleObject)
           {
             qurl<-paste(grapleObject@GWSURL, "service_status", sep="/")
-            status<- getURL(qurl, .opts = list(ssl.verifypeer = FALSE))
+            status<- GET(qurl)
             grapleObject@StatusCode <- 1
             grapleObject@StatusMsg <- paste(toString(fromJSON(status)[1]),toString(fromJSON(status)[2]))
             return(grapleObject)
