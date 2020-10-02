@@ -343,7 +343,7 @@ setGeneric(name="setAPIKey",
 #' Checks if the graple service is up and running on the submission URL provided
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -379,7 +379,7 @@ setGeneric(name="GrapleRunExperiment",
 #' Checks the status of an experiment
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -396,7 +396,7 @@ setGeneric(name="GrapleCheckExperimentCompletion",
 #' Downloads the results to the results directory path with exp name/job id as the directory name
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -433,7 +433,7 @@ setGeneric(name="GrapleRunSweepExperiment",
 #' A method to abort an experiment
 #' @param grapleObject A Graple Object
 #' @return A text message with the status of the operation
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -451,7 +451,7 @@ setGeneric(name="GrapleEndExperiment",
 #' @param grapleObject A Graple Object
 #' @return A status msg indicating whether Web service and GRAPLEr are compatible
 #' and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -468,7 +468,7 @@ setGeneric(name="GrapleChkVersionCompatibility",
 #' Provides a list of post processing operations/ filters available
 #' @param grapleObject A Graple Object
 #' @return Adds the list of filters to StatusMsg and returns the Graple object
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -669,7 +669,7 @@ setMethod(f="setAPIKey",
 #' Checks if the graple service is up and running on the submission URL provided
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -769,7 +769,7 @@ setMethod(f="GrapleRunExperiment",
 #' Checks the status of an experiment
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -797,7 +797,7 @@ setMethod(f="GrapleCheckExperimentCompletion",
 #' Downloads the results to the results directory path with exp name/job id as the directory name
 #' @param grapleObject A Graple Object
 #' @return The status message is updated on Graple object and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -947,7 +947,7 @@ setMethod(f="GrapleRunSweepExperiment",
 #' A method to abort an experiment
 #' @param grapleObject A Graple Object
 #' @return A text message with the status of the operation
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -968,7 +968,7 @@ setMethod(f="GrapleEndExperiment",
 #' @param grapleObject A Graple Object
 #' @return A status msg indicating whether Web service and GRAPLEr are compatible
 #' and the Graple object is returned
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
@@ -1000,7 +1000,7 @@ setMethod(f="GrapleChkVersionCompatibility",
 #' Provides a list of post processing operations/ filters available
 #' @param grapleObject A Graple Object
 #' @return Adds the list of filters to StatusMsg and returns the Graple object
-#' @importFrom RCurl getURL
+#' @importFrom httr GET
 #' @export
 #' @examples
 #' \dontrun{
