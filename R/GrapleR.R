@@ -683,7 +683,7 @@ setMethod(f="GrapleCheckService",
             qurl<-paste(grapleObject@GWSURL, "service_status", sep="/")
             status<- GET(qurl)
             grapleObject@StatusCode <- 1
-            grapleObject@StatusMsg <- paste(toString(fromJSON(status)[1]),toString(fromJSON(status)[2]))
+            grapleObject@StatusMsg <- paste(content(status)$status,content(status)$time)
             return(grapleObject)
           }
 )
