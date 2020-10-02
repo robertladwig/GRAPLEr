@@ -783,7 +783,7 @@ setMethod(f="GrapleCheckExperimentCompletion",
           {
             qurl <- paste(grapleObject@GWSURL, "GrapleRunStatus", grapleObject@JobID, sep="/")
             grapleObject@StatusCode <- -1
-            status <- fromJSON(content(GET(qurl, apikey=grapleObject@APIKey), "text"))
+            status <- fromJSON(content(GET(qurl, config = [apikey=grapleObject@APIKey]), "text"))
             
             if(nchar(status$errors) > 0)
               grapleObject@StatusMsg <- toString(status$errors)
