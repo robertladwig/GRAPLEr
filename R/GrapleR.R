@@ -743,7 +743,7 @@ setMethod(f="GrapleRunExperiment",
               qurl <- paste(grapleObject@GWSURL, "GrapleRun", sep="/")
               postresp = POST(qurl, .params = params, files=fileUpload(tarfile))
               print(postresp)
-              response = fromJSON(postresp)
+              response = fromJSON(content(postresp, "text"))
               
               grapleObject@JobID <- ''
               grapleObject@StatusCode <- -1
@@ -924,7 +924,7 @@ setMethod(f="GrapleRunSweepExperiment",
               grapleObject@JobID <- ''
               grapleObject@StatusCode <- -1
               subresp <- POST(qurl, .params = params, files=fileUpload(tarfile))
-              response <- fromJSON(subresp)
+              response <- fromJSON(content(subresp, "text"))
 
               if(nchar(response$errors) > 0) {
                 grapleObject@StatusMsg <- response$errors
