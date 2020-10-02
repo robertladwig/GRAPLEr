@@ -681,7 +681,8 @@ setMethod(f="GrapleCheckService",
           definition=function(grapleObject)
           {
             qurl<-paste(grapleObject@GWSURL, "service_status", sep="/")
-            status<- getURL(qurl)
+            opt <- RCurl::curlOptions(verbose = TRUE, sslversion = CURL_SSLVERSION_TLSv1_2)
+            status<- getURL(qurl, .opts = opt)
             grapleObject@StatusCode <- 1
             grapleObject@StatusMsg <- paste(toString(fromJSON(status)[1]),toString(fromJSON(status)[2]))
             return(grapleObject)
