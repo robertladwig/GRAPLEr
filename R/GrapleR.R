@@ -741,7 +741,8 @@ setMethod(f="GrapleRunExperiment",
               if(!missing(filterName))
                 params['filter'] = filterName
               qurl <- paste(grapleObject@GWSURL, "GrapleRun", sep="/")
-              postresp = POST(qurl, config = params, files=upload_file(tarfile))
+#              postresp = POST(qurl, config = params, files=upload_file(tarfile))
+              postresp = postForm(qurl, .params = params, files=fileUpload(tarfile))
               print(postresp)
               response = fromJSON(postresp)
               
