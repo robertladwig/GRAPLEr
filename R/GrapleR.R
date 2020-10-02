@@ -741,7 +741,6 @@ setMethod(f="GrapleRunExperiment",
               if(!missing(filterName))
                 params['filter'] = filterName
               qurl <- paste(grapleObject@GWSURL, "GrapleRun", sep="/")
- #             postresp = postForm(qurl, .params = params, files=fileUpload(tarfile))
               postresp = POST(qurl, config = params, files=upload_file(tarfile))
               response = fromJSON(postresp)
               
@@ -783,7 +782,7 @@ setMethod(f="GrapleCheckExperimentCompletion",
           {
             qurl <- paste(grapleObject@GWSURL, "GrapleRunStatus", grapleObject@JobID, sep="/")
             grapleObject@StatusCode <- -1
-            status <- fromJSON(getForm(qurl, apikey=grapleObject@APIKey))
+            status <- fromJSON(GET(qurl, apikey=grapleObject@APIKey))
             
             if(nchar(status$errors) > 0)
               grapleObject@StatusMsg <- toString(status$errors)
@@ -831,7 +830,7 @@ setMethod(f="GrapleGetExperimentResults",
               td<-getwd()
               qurl<-paste(grapleObject@GWSURL, "GrapleRunResults", grapleObject@JobID, sep="/")
               grapleObject@StatusCode <- -1
-              getresp <- getForm(qurl, apikey=grapleObject@APIKey)
+              getresp <- GET(qurl, apikey=grapleObject@APIKey)
               status <- fromJSON(getresp)
               if(nchar(status$errors) > 0)
                   grapleObject@StatusMsg <- status$errors
@@ -923,7 +922,7 @@ setMethod(f="GrapleRunSweepExperiment",
 
               grapleObject@JobID <- ''
               grapleObject@StatusCode <- -1
-              subresp <- postForm(qurl, .params = params, files=fileUpload(tarfile))
+              subresp <- POST(qurl, config = params, files=upload_file(tarfile))
               response <- fromJSON(subresp)
 
               if(nchar(response$errors) > 0) {
@@ -960,7 +959,7 @@ setMethod(f="GrapleEndExperiment",
           definition=function(grapleObject)
           {
             qurl <- paste(grapleObject@GWSURL, "GrapleEnd", grapleObject@JobID, sep="/")
-            status<- getForm(qurl, apikey=grapleObject@APIKey)
+            status<- GET(qurl, apikey=grapleObject@APIKey)
             return (fromJSON(status))
           }
 )
